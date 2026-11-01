@@ -1,0 +1,115 @@
+    1  tmux
+    2  apt install tmux
+    3  sudo apt install tmux
+    4  su -
+    5  sudo whoami
+    6  reboot
+    7  /usr/sbin/reboot 
+    8  exit
+    9  test
+   10  sdf
+   11  123
+   12  rofdlan
+   13  tmux
+   14  history > "$HOME/mephi-evidence/history-pane-${TMUX_PANE#%}.out"
+   15  history
+   16  groupadd students
+   17  nano
+   18  sudo apt install vim
+   19  vim ~/.bashrc 
+   20  groupadd students
+   21  echo $PATH
+   22  ls
+   23  pwd
+   24  ~/.bashrc
+   25  sudo ~/.bashrc
+   26  sudo bash ~/.bashrc
+   27  vim ~/.bashrc 
+   28  sudo bash ~/.bashrc
+   29  vim ~/.bashrc 
+   30  sudo bash ~/.bashrc
+   31  vim ~/.bashrc 
+   32  sudo bash ~/.bashrc
+   33  groupadd students
+   34  echo $PATH
+   35  vim ~/.bashrc 
+   36  ls /usr/sbin/ | grep group
+   37  sudo groupadd students
+   38  sudo useradd -m -u 1234 -G students user1
+   39  getent passwd
+   40  ls /bin | grep sh
+   41  sudo usermod -s /bin/bash user1
+   42  getent passwd user1
+   43  sudo chage -M 90 user1
+   44  sudo chage -l user1
+   45  history
+   46  mkdir -p ~/lab-01-steps
+   47  sudo find / -type f -perm -4000
+   48  sudo find / -type f -perm -4000 > ~/lab-01-steps/suid-files.out
+   49  ps
+   50  ps -eo pid,ruid,euid,comm | awk '$2!=0 && $3==0'
+   51  ps -eo pid,ruid,euid,comm | awk '$2!=0 && $3==0' > ~/lab-01-steps/euid-root-without-real-root-pid.out
+   52  history
+   53  sudo -u user1 cat /etc/shadow
+   54  sudo -u user1 cat /etc/shadow > ~/lab-01-steps/default-not-copy-cat.out
+   55  vim ~/lab-01-steps/default-not-copy-cat.out 
+   56  sudo -u user1 cat /etc/shadow | tee  ~/lab-01-steps/default-not-copy-cat.out
+   57  vim ~/lab-01-steps/default-not-copy-cat.out 
+   58  sudo -u user1 cat /etc/shadow 2>  ~/lab-01-steps/default-not-copy-cat.out
+   59  vim ~/lab-01-steps/default-not-copy-cat.out 
+   60  whereis cat
+   61  sudo install -o root -g root -m 0755 /usr/bin/cat /home/user1/cat2
+   62  ls -l /home/user1/cat2
+   63  sudo ls -l /home/user1/cat2
+   64  sudo chmod u+s /home/user1/cat2
+   65  sudo ls -l /home/user1/cat2
+   66  sudo ls -l /home/user1/cat2 > ~/lab-01-steps/3.2-set-uid-for-cat-copy.out
+   67  sudo -u user1 /home/user1/cat2 /etc/shadow
+   68  sudo -u user1 /home/user1/cat2 /etc/shadow > ~/lab-01-steps/3.2-etc-shadow-success-read.out
+   69  sudo -u user1 /home/user1/cat /etc/shadow 2> ~/lab-01-steps/3.2-etc-shadow-failed-read.out
+   70  vim ~/lab-01-steps/3.2-etc-shadow-failed-read.out 
+   71  sudo -u user1 cat /etc/shadow 2> ~/lab-01-steps/3.2-etc-shadow-failed-read.out
+   72  vim ~/lab-01-steps/3.2-etc-shadow-failed-read.out 
+   73  sudo -u user1 touch /home/user1/some-file.txt
+   74  sudo -u user1 chown root:root /home/user1/some-file.txt 
+   75  sudo -u user1 chown root:root /home/user1/some-file.txt 2> ~/lab-01-steps/4.1-trying-change-ownership.out
+   76  vim ~/lab-01-steps/4.1-trying-change-ownership.out 
+   77  whoami chown
+   78  whereis chown
+   79  sudo install -o root -g root -m 0755 /usr/bin/chown /home/user1/chown2
+   80  ls /home/user1/chown2
+   81  sudo ls /home/user1/chown2
+   82  sudo ls /home/user1 | grep chown
+   83  sudo ls /home/user1 | grep chown > ~/lab-01-steps/4.2-copying-chown-to-user1.out
+   84  getcap
+   85  sudo getcap /home/user1/chown2
+   86  sudo ls /home/user1 | grep chown > ~/lab-01-steps/4.2-chown2-caps.out
+   87  sudo setcap cap_chown=ep /home/user1/chown2
+   88  sudo getcap /home/user1/chown2
+   89  ls
+   90  vim ~/lab-01-steps/4.2-chown2-caps.out 
+   91  ls
+   92  sudo getcap /home/user1/chown2 > ~/lab-01-steps/4.2-chown2-caps-after-update.out
+   93  sudo -u user1 /home/user1/chown2 root:root /home/user1/some-file.txt
+   94  ls -l /home/user1/some-file.txt
+   95  sudo ls -l /home/user1/some-file.txt
+   96  sudo ls -l /home/user1/some-file.txt > ~/lab-01-steps/4.2-update-file-by-chown2.out
+   97  sudo -u user1 chown root:root /home/user1/some-file.txt
+   98  sudo -u user1 chown root:root /home/user1/some-file.txt 2> 4.2-failed-update-file-by-chown.out
+   99  sudo EDITOR=vim visudo
+  100  visudo -c
+  101  sudo visudo -c
+  102  cat /etc/sudoers | grep -n -C 3 'user1'
+  103  sudo cat /etc/sudoers | grep -n -C 3 'user1'
+  104  sudo cat /etc/sudoers | grep -n -C 3 'user1' > ~/lab-01-steps/5-visudo-updated-config.out
+  105  vim ~/lab-01-steps/5-visudo-updated-config.out 
+  106  sudo timedatectl set-ntp false
+  107  date
+  108  date > ~/lab-01-steps/5-date-before-update.out
+  109  sudo -u user1 sudo timedatectl set-time "2027-03-15 12:34:56"
+  110  timedatectl
+  111  date
+  112  date > ~/lab-01-steps/5-date-after-update.out
+  113  timedatectl
+  114  timedatectl > ~/lab-01-steps/5-datetimectl-after-update.out
+  115  history > ~/history.out 

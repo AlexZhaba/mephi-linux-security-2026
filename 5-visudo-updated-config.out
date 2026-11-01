@@ -1,0 +1,7 @@
+45-
+46-# User privilege specification
+47-root	ALL=(ALL:ALL) ALL
+48:user1   ALL=(root) NOPASSWD: /usr/bin/timedatectl set-time *
+49-
+50-# Allow members of group sudo to execute any command
+51-%sudo	ALL=(ALL:ALL) ALL

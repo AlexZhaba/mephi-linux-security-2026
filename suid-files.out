@@ -1,0 +1,11 @@
+/usr/bin/umount
+/usr/bin/chsh
+/usr/bin/gpasswd
+/usr/bin/mount
+/usr/bin/sudo
+/usr/bin/su
+/usr/bin/passwd
+/usr/bin/newgrp
+/usr/bin/chfn
+/usr/lib/openssh/ssh-keysign
+/usr/lib/dbus-1.0/dbus-daemon-launch-helper
